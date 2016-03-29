@@ -1,9 +1,31 @@
 {
   "name": "peon",
   "description": "Does things you ask it too",
+  "version": "0.0.1",
+  "author": "Marthinus Engelbrecth <mj.engelbrecht@gmail.com> (http://www.marthinusengelbrecht.co.za/)",
   "repository": {
     "type": "git",
     "url": "https://github.com/marthinus-engelbrecht/peon.git"
   },
-  "main": "index.js"
+  "main": "./source/cli.js",
+  "bin": {
+    "peon": "./bin/peon.js"
+  },
+  "scripts": {
+    "compile": "babel source --out-dir dist",
+    "prepublish": "npm run compile",
+    "checkStyle": "jscs .",
+    "lint": "jshint .",
+    "qualityAssurance": "npm run checkStyle && npm run lint",
+    "test": "npm run qualityAssurance && jasmine JASMINE_CONFIG_PATH=jasmine.json"
+  },
+  "devDependencies": {
+    "babel-core": "^6.7.4",
+    "jasmine-es6": "^0.1.7",
+    "jscs": "^2.11.0",
+    "jshint": "^2.9.1"
+  },
+  "dependencies": {
+    "commander": "^2.9.0"
+  }
 }

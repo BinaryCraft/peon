@@ -34,6 +34,7 @@
     "it": false,
     "describe": false,
     "afterEach": false,
-    "System": false
+    "jasmine": false,
+    "expect": false
   }
 }

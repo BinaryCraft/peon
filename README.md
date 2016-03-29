@@ -11,7 +11,7 @@ Definition of peon
 
 ### Install
 
-`npm install peon -g`
+`npm install peon --global`
 
 ### Usage
 
@@ -21,5 +21,6 @@ Definition of peon
 
 `peon './My_Generator'`
 
-    
+### Writing generators
 
+Peon only requires 1 thing of you; your generator should have an index.js that will execute it. 
