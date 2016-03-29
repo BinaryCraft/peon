@@ -36,4 +36,5 @@ describe(`Given the cli command is loaded`, function() {
             });
         });
     });
+
 });
