@@ -1,7 +1,7 @@
 {
   "name": "peon-cli",
   "description": "Does things you ask it too",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Marthinus Engelbrecth <mj.engelbrecht@gmail.com> (http://www.marthinusengelbrecht.co.za/)",
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
     "jshint": "^2.9.1"
   },
   "dependencies": {
+    "babel-polyfill": "^6.7.4",
     "commander": "^2.9.0"
   }
 }

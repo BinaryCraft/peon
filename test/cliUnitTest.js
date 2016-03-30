@@ -2,9 +2,10 @@ import cli from '../source/cli';
 
 describe(`Given the cli command is loaded`, function() {
     describe(`when the it's executed`, function() {
-        let requireSpy, processSpy, program, path_to_generator;
+        let requireSpy, processSpy, program, path_to_generator, generator;
 
         beforeEach(function() {
+            generator = jasmine.createSpyObj('generator', [ 'run' ]);
             program = jasmine.createSpyObj('program', [ 'arguments', 'action', 'parse' ]);
             program.arguments.and.callFake(function() {
                 return program;
@@ -16,6 +17,12 @@ describe(`Given the cli command is loaded`, function() {
             });
 
             requireSpy = jasmine.createSpy('require');
+
+            requireSpy.and.callFake(function() {
+                return {
+                    default: generator
+                };
+            });
 
             processSpy = {
                 argv: [ '/Users/Marthinus/.nvm/versions/node/v5.9.0/bin/node',
@@ -32,7 +39,7 @@ describe(`Given the cli command is loaded`, function() {
             });
 
             it(`it should execute that generator`, function() {
-                expect(requireSpy).toHaveBeenCalledWith(path_to_generator);
+                expect(generator.run).toHaveBeenCalledWith();
             });
         });
     });

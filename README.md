@@ -23,4 +23,5 @@ Definition of peon
 
 ### Writing generators
 
-Peon only requires 1 thing of you; your generator should have an index.js that will execute it. 
+Peon only requires 1 thing of you:
+- Your generator should return an object with a `.run()` functions kicks of the generator;  
