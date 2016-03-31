@@ -1,4 +1,3 @@
-export default function cli(processArguments, executeGenerator) {
-    processArguments();
-    executeGenerator();
+export default function cli(transformArguments, executeGenerator, process) {
+    executeGenerator(transformArguments(process.argv));
 }

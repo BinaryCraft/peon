@@ -1,4 +1,4 @@
-import processArguments from '../source/processArguments';
+import transformArguments from '../source/transformArguments';
 import * as ErrorTypes from '../source/constants/errorTypes';
 
 describe(`Given the processArguments function is executed with arguments and help text`, function() {
@@ -20,7 +20,7 @@ describe(`Given the processArguments function is executed with arguments and hel
                 '--argument4',
                 'value4' ];
 
-            result = processArguments(args);
+            result = transformArguments(args);
         });
 
         it(`it should return the options and the path to the generator`, function() {
@@ -59,7 +59,7 @@ describe(`Given the processArguments function is executed with arguments and hel
                 message: `'${args[2]}' is not a valid command`
             };
 
-            expect(processArguments.bind(this, args)).toThrow(error);
+            expect(transformArguments.bind(this, args)).toThrow(error);
         });
     });
 });

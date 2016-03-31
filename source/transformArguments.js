@@ -1,7 +1,7 @@
 import parseArgs from 'minimist';
 import * as ErrorTypes from '../source/constants/errorTypes';
 
-function objectToKeyValuePairArry(obj) {
+function objectToKeyValuePairArray(obj) {
     let array = [];
     for (var key in obj) {
         if (obj.hasOwnProperty(key)) {
@@ -11,13 +11,13 @@ function objectToKeyValuePairArry(obj) {
     }
 }
 
-export default function processArguments(args) {
+export default function transformArguments(args) {
     const normalizedArgs = args.slice(2);
     if (normalizedArgs[ 0 ] === 'run') {
         let parsedArgs = parseArgs(normalizedArgs.slice(1));
         const path = parsedArgs._[ 0 ];
         delete parsedArgs._;
-        const keyValuePairArray = objectToKeyValuePairArry(parsedArgs);
+        const keyValuePairArray = objectToKeyValuePairArray(parsedArgs);
         const options = new Map(keyValuePairArray);
         return { path, options };
     } else {

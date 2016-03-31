@@ -1,20 +1,28 @@
 import cli from '../source/cli';
 
-describe(`Given the cli command is loaded`, function() {
-    describe(`when it's executed`, function() {
-        let executeGenerator, processArguments;
+describe(`Given the cli is loaded`, function() {
+    describe(`when it's executed with arguments`, function() {
+        let process, executeGenerator, transformArguments,
+            fakeArguments = 'someFakeArguments',
+            fakeTransformedArguments = 'someFakeProcessedArguments';
+
         beforeEach(function() {
+            process = {};
+            process.argv = fakeArguments;
             executeGenerator = jasmine.createSpy('executeGenerator');
-            processArguments = jasmine.createSpy('processArguments');
-            cli(processArguments, executeGenerator);
+            transformArguments = jasmine.createSpy('transformArguments');
+
+            transformArguments.and.returnValue(fakeTransformedArguments);
+
+            cli(transformArguments, executeGenerator, process);
         });
 
-        it(`it should process the commandline arguments`, function() {
-            expect(processArguments).toHaveBeenCalled();
+        it(`it should transform the commandline arguments`, function() {
+            expect(transformArguments).toHaveBeenCalledWith(fakeArguments);
         });
 
-        it(`it should execute the generator`, function() {
-            expect(executeGenerator).toHaveBeenCalled();
+        it(`it should execute the generator with the result of transformArguments()`, function() {
+            expect(executeGenerator).toHaveBeenCalledWith(fakeTransformedArguments);
         });
     });
 });
