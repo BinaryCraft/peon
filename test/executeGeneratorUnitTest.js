@@ -1,7 +1,7 @@
 import executeGenerator from '../source/executeGenerator';
 
-describe(`Given the runGenerator function is executed`, function() {
-    let requireSpy, processSpy, program, path_to_generator, generator;
+describe(`Given the executeGenerator function is executed`, function() {
+    let requireSpy, path_to_generator, generator;
 
     beforeEach(function() {
         generator = jasmine.createSpyObj('generator', [ 'run' ]);
@@ -15,7 +15,7 @@ describe(`Given the runGenerator function is executed`, function() {
         });
     });
 
-    describe(`with the path to the generator`, function() {
+    describe(`with the path to the generator and the name of the generator`, function() {
 
         beforeEach(function() {
             path_to_generator = './does_everything/magic_generator';
