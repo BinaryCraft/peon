@@ -1,3 +1,4 @@
-export default function cli(executeGenerator) {
+export default function cli(processArguments, executeGenerator) {
+    processArguments();
     executeGenerator();
 }
