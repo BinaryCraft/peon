@@ -15,13 +15,18 @@ Definition of peon
 
 ### Usage
 
-`peon [path-to-generator]`
+`peon run <path-to-generator> [generator_options]`
+
+`<path-to-generator>`: The path to the generator
+`[generator_options]`: Options that will be passed to the generator, see below [example](#Example)
+
 
 ### Example 
 
-`peon './My_Generator'`
+`peon './My_Generator' --name 'magically_generated_component__name' --packageJSON` 
+
+This will run the generator at './My_Generator' and pass the options `--name` and `--packageJSON` to the generators `.run()` function 
 
 ### Writing generators
 
-Peon only requires 1 thing of you:
-- Your generator should return an object with a `.run()` functions kicks of the generator;  
+Peon only requires 1 thing of you. Your generator should return an object with a `.run(options)` function that takes the generator options as an argument and kicks off the generator. What you do with the options and how you implement your generator is none of peon's business
