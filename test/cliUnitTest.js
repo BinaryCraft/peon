@@ -2,46 +2,14 @@ import cli from '../source/cli';
 
 describe(`Given the cli command is loaded`, function() {
     describe(`when the it's executed`, function() {
-        let requireSpy, processSpy, program, path_to_generator, generator;
-
+        let executeGenerator;
         beforeEach(function() {
-            generator = jasmine.createSpyObj('generator', [ 'run' ]);
-            program = jasmine.createSpyObj('program', [ 'arguments', 'action', 'parse' ]);
-            program.arguments.and.callFake(function() {
-                return program;
-            });
-
-            program.action.and.callFake(function(func) {
-                func(path_to_generator);
-                return program;
-            });
-
-            requireSpy = jasmine.createSpy('require');
-
-            requireSpy.and.callFake(function() {
-                return {
-                    default: generator
-                };
-            });
-
-            processSpy = {
-                argv: [ '/Users/Marthinus/.nvm/versions/node/v5.9.0/bin/node',
-                    '/Users/Marthinus/.nvm/versions/node/v5.9.0/bin/peon',
-                    path_to_generator ]
-            };
+            executeGenerator = jasmine.createSpy('executeGenerator');
+            cli(executeGenerator);
         });
 
-        describe(`with the path to the generator`, function() {
-
-            beforeEach(function() {
-                path_to_generator = './does_everything/magic_generator';
-                cli(requireSpy, program, processSpy);
-            });
-
-            it(`it should execute that generator`, function() {
-                expect(generator.run).toHaveBeenCalledWith();
-            });
+        it(`it should execute the generator`, function() {
+            expect(executeGenerator).toHaveBeenCalled();
         });
     });
-
 });
