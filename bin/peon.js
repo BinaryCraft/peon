@@ -1,8 +1,11 @@
 #!/usr/bin/env node
 require('babel-polyfill');
 
-var program = require('commander');
+process.on('unhandledRejection', err => { throw err; });
 
 var cli = require('../dist/cli.js').default;
+var transformArguments = require('../dist/transformArguments').default;
+var executeGenerator = require('../dist/executeGenerator').default;
 
-cli(require, program, process);
+cli(transformArguments, executeGenerator, process, require);
+
