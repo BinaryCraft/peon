@@ -1,5 +1,5 @@
 import parseArgs from 'minimist';
-import * as ErrorTypes from '../source/constants/errorTypes';
+import * as ErrorTypes from './constants/errorTypes';
 
 function objectToKeyValuePairArray(obj) {
     let array = [];
