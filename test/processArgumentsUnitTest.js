@@ -19,6 +19,7 @@ describe(`Given the processArguments function is executed with arguments and hel
                 '--argument3',
                 '--argument4',
                 'value4' ];
+
             result = processArguments(args);
         });
 
@@ -42,22 +43,22 @@ describe(`Given the processArguments function is executed with arguments and hel
     });
 
     describe(`with 'run' not at the 3rd position`, function() {
-        args = [ '/Users/Marthinus/.nvm/versions/node/v5.9.0/bin/node',
-            '/Users/Marthinus/.nvm/versions/node/v5.9.0/bin/peon',
-            '--argument1',
-            'value1',
-            '--argument2',
-            'value2',
-            '--argument3',
-            '--argument4',
-            'value4' ];
-
-        const error = {
-            name: ErrorTypes.INVALID_COMMAND,
-            message: `'${args[2]}' is not a valid command`
-        };
-
         it(`it should throw an error`, function() {
+            args = [ '/Users/Marthinus/.nvm/versions/node/v5.9.0/bin/node',
+                '/Users/Marthinus/.nvm/versions/node/v5.9.0/bin/peon',
+                '--argument1',
+                'value1',
+                '--argument2',
+                'value2',
+                '--argument3',
+                '--argument4',
+                'value4' ];
+
+            var error = {
+                name: ErrorTypes.INVALID_COMMAND,
+                message: `'${args[2]}' is not a valid command`
+            };
+
             expect(processArguments.bind(this, args)).toThrow(error);
         });
     });
