@@ -14,7 +14,7 @@ describe(`Given the cli is loaded`, function() {
 
             transformArguments.and.returnValue(fakeTransformedArguments);
 
-            cli(transformArguments, executeGenerator, process);
+            cli(transformArguments, executeGenerator, process, require);
         });
 
         it(`it should transform the commandline arguments`, function() {
@@ -22,7 +22,7 @@ describe(`Given the cli is loaded`, function() {
         });
 
         it(`it should execute the generator with the result of transformArguments()`, function() {
-            expect(executeGenerator).toHaveBeenCalledWith(fakeTransformedArguments);
+            expect(executeGenerator).toHaveBeenCalledWith(require, fakeTransformedArguments);
         });
     });
 });
