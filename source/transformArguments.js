@@ -19,11 +19,12 @@ export default function transformArguments(args) {
         delete parsedArgs._;
         const keyValuePairArray = objectToKeyValuePairArray(parsedArgs);
         const options = new Map(keyValuePairArray);
-        return { path, options };
-    } else {
+        return [ path, options ];
+    }
+    else {
         throw {
             name: ErrorTypes.INVALID_COMMAND,
-            message: `'${normalizedArgs[0]}' is not a valid command`
+            message: `'${normalizedArgs[ 0 ]}' is not a valid command`
         };
     }
 }

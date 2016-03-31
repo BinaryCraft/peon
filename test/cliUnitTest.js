@@ -4,7 +4,7 @@ describe(`Given the cli is loaded`, function() {
     describe(`when it's executed with arguments`, function() {
         let process, executeGenerator, transformArguments,
             fakeArguments = 'someFakeArguments',
-            fakeTransformedArguments = 'someFakeProcessedArguments';
+            fakeTransformedArguments = [ 'pathToGenerator', 'options' ];
 
         beforeEach(function() {
             process = {};
@@ -22,7 +22,7 @@ describe(`Given the cli is loaded`, function() {
         });
 
         it(`it should execute the generator with the result of transformArguments()`, function() {
-            expect(executeGenerator).toHaveBeenCalledWith(require, fakeTransformedArguments);
+            expect(executeGenerator).toHaveBeenCalledWith(require, ...fakeTransformedArguments);
         });
     });
 });

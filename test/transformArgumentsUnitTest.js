@@ -32,10 +32,7 @@ describe(`Given the processArguments function is executed with arguments and hel
                 [ 'argument4', 'value4' ]
             ]);
 
-            expectedResult = {
-                path: generatorPath,
-                options: optionsMap
-            };
+            expectedResult = [ generatorPath, optionsMap ];
 
             expect(result).toEqual(expectedResult);
         });
@@ -56,7 +53,7 @@ describe(`Given the processArguments function is executed with arguments and hel
 
             var error = {
                 name: ErrorTypes.INVALID_COMMAND,
-                message: `'${args[2]}' is not a valid command`
+                message: `'${args[ 2 ]}' is not a valid command`
             };
 
             expect(transformArguments.bind(this, args)).toThrow(error);
