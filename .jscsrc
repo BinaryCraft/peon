@@ -13,7 +13,6 @@
   "requireCapitalizedConstructors": true,
   "validateParameterSeparator": ", ",
   "disallowMultipleVarDecl": null,
-  "esnext": true,
   "requireLineFeedAtFileEnd": null,
   "disallowKeywordsOnNewLine": null,
   "requireSemicolons": true,
